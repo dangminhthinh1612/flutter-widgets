@@ -83,55 +83,57 @@ class _CaculatorState extends State<Caculator> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      Expanded(
-        child: Container(
-          alignment: Alignment.bottomRight,
-          margin: const EdgeInsets.all(16),
-          child: Text(
-            _outPut,
-            style: const TextStyle(fontSize: 40),
+    return Column(
+      children: [
+        Expanded(
+          child: Container(
+            alignment: Alignment.bottomRight,
+            margin: const EdgeInsets.all(16),
+            child: Text(
+              _outPut,
+              style: const TextStyle(fontSize: 40),
+            ),
           ),
         ),
-      ),
-      Row(
-        children: [
-          _buildButton('C'),
-          _buildButton('⌫'),
-        ],
-      ),
-      Row(
-        children: [
-          _buildButton('7'),
-          _buildButton('8'),
-          _buildButton('9'),
-          _buildButton('÷'),
-        ],
-      ),
-      Row(
-        children: [
-          _buildButton('4'),
-          _buildButton('5'),
-          _buildButton('6'),
-          _buildButton('×'),
-        ],
-      ),
-      Row(
-        children: [
-          _buildButton('1'),
-          _buildButton('2'),
-          _buildButton('3'),
-          _buildButton('-'),
-        ],
-      ),
-      Row(
-        children: [
-          _buildButton('0'),
-          _buildButton('000'),
-          _buildButton('.'),
-          _buildButton('='),
-        ],
-      )
-    ]);
+        Row(
+          children: [
+            _buildButton('C'),
+            _buildButton('⌫'),
+          ],
+        ),
+        Row(
+          children: [
+            _buildButton('7'),
+            _buildButton('8'),
+            _buildButton('9'),
+            _buildButton('÷'),
+          ],
+        ),
+        Row(
+          children: [
+            _buildButton('4'),
+            _buildButton('5'),
+            _buildButton('6'),
+            _buildButton('×'),
+          ],
+        ),
+        Row(
+          children: [
+            _buildButton('1'),
+            _buildButton('2'),
+            _buildButton('3'),
+            _buildButton('-'),
+          ],
+        ),
+        Row(
+          children: [
+            _buildButton('0'),
+            _buildButton('000'),
+            _buildButton('.'),
+            _buildButton('='),
+          ],
+        )
+      ],
+    );
   }
 }
