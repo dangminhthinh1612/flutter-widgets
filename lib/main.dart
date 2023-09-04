@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_application_1/widgets/Drawer/drawer_column.dart';
-import 'package:flutter_application_1/widgets/caculator.dart';
+import 'package:flutter_application_1/widgets/calculator.dart';
 
 void main() {
   runApp(const App());
@@ -29,7 +29,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(),
+      theme: ThemeData(useMaterial3: true),
       darkTheme: ThemeData.dark(),
       themeMode: _themeMode,
       debugShowCheckedModeBanner: false,
