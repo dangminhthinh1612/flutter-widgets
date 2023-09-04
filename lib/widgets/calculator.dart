@@ -58,23 +58,29 @@ class _CaculatorState extends State<Caculator> {
     }
   }
 
-  Widget _buildButton(String button) {
+  Widget _buildButton(String button,
+      {double aspectRatio = 1, Color color = Colors.grey, int flex = 1}) {
     return Expanded(
-      child: InkWell(
-        onTap: () {
-          _onPress(button);
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 0.05,
+      flex: flex,
+      child: Container(
+        margin: const EdgeInsets.all(1),
+        child: Material(
+          color: color,
+          child: InkWell(
+            onTap: () {
+              _onPress(button);
+            },
+            child: AspectRatio(
+              aspectRatio: aspectRatio,
+              child: Container(
+                alignment: Alignment.center,
+                child: Text(
+                  button,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+              ),
             ),
-          ),
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            button,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
         ),
       ),
@@ -97,8 +103,9 @@ class _CaculatorState extends State<Caculator> {
         ),
         Row(
           children: [
-            _buildButton('C'),
+            _buildButton('C', flex: 2, aspectRatio: 2, color: Colors.orange),
             _buildButton('⌫'),
+            _buildButton('÷', color: Colors.green),
           ],
         ),
         Row(
@@ -106,7 +113,7 @@ class _CaculatorState extends State<Caculator> {
             _buildButton('7'),
             _buildButton('8'),
             _buildButton('9'),
-            _buildButton('÷'),
+            _buildButton('×', color: Colors.green),
           ],
         ),
         Row(
@@ -114,7 +121,7 @@ class _CaculatorState extends State<Caculator> {
             _buildButton('4'),
             _buildButton('5'),
             _buildButton('6'),
-            _buildButton('×'),
+            _buildButton('-', color: Colors.green),
           ],
         ),
         Row(
@@ -122,7 +129,7 @@ class _CaculatorState extends State<Caculator> {
             _buildButton('1'),
             _buildButton('2'),
             _buildButton('3'),
-            _buildButton('-'),
+            _buildButton('+', color: Colors.green),
           ],
         ),
         Row(
@@ -130,7 +137,7 @@ class _CaculatorState extends State<Caculator> {
             _buildButton('0'),
             _buildButton('000'),
             _buildButton('.'),
-            _buildButton('='),
+            _buildButton('=', color: Colors.orange),
           ],
         )
       ],
