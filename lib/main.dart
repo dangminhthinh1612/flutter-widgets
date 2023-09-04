@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_application_1/screens/new_transaction.dart';
 import 'package:flutter_application_1/widgets/Drawer/drawer_column.dart';
-import 'package:flutter_application_1/widgets/calculator.dart';
 
 void main() {
   runApp(const App());
@@ -55,7 +55,7 @@ class _AppState extends State<App> {
         ),
         drawer: const Drawer(child: DrawerColumn()),
         body: const Center(
-          child: Caculator(),
+          child: NewTransaction(),
         ),
       ),
     );
