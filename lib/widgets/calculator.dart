@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:math_expressions/math_expressions.dart';
+import "package:flutter/material.dart";
+import "package:math_expressions/math_expressions.dart";
 
 class Caculator extends StatefulWidget {
   const Caculator({super.key});
@@ -11,6 +11,7 @@ class Caculator extends StatefulWidget {
 class _CaculatorState extends State<Caculator> {
   String _outPut = "0";
   String _realInPut = "";
+  bool _isSubmit = false;
 
   void _onPress(String button) {
     setState(() {
@@ -23,6 +24,9 @@ class _CaculatorState extends State<Caculator> {
         if (_outPut == "") {
           _outPut = "0";
         }
+      } else if (button == "✔") {
+        _isSubmit = false;
+        Navigator.pop(context, _outPut);
       } else {
         if (_outPut.startsWith("0")) {
           if (button == "000" || button == "0") {
@@ -45,21 +49,29 @@ class _CaculatorState extends State<Caculator> {
   }
 
   String _calculate() {
-    _realInPut = _outPut.replaceAll('÷', '/');
-    _realInPut = _realInPut.replaceAll('×', '*');
+    _realInPut = _outPut.replaceAll("÷", "/");
+    _realInPut = _realInPut.replaceAll("×", "*");
 
     try {
       Parser p = Parser();
       Expression exp = p.parse(_realInPut);
       ContextModel cm = ContextModel();
+      _isSubmit = true;
       return _outPut = exp.evaluate(EvaluationType.REAL, cm).toString();
     } catch (e) {
-      return 'Error';
+      return "Error";
     }
   }
 
-  Widget _buildButton(String button,
-      {double aspectRatio = 1, Color color = Colors.grey, int flex = 1,}) {
+  Widget _buildButton(
+    String button, {
+    double aspectRatio = 1,
+    Color color = Colors.grey,
+    int flex = 1,
+  }) {
+    final double modalWidth = MediaQuery.of(context).size.width;
+    final double modalHeigth = MediaQuery.of(context).size.height;
+
     return Expanded(
       flex: flex,
       child: Container(
@@ -71,13 +83,18 @@ class _CaculatorState extends State<Caculator> {
               _onPress(button);
             },
             child: AspectRatio(
-              aspectRatio: aspectRatio,
+              // set aspectRatio depend on width of screen
+              aspectRatio: (modalWidth * 5 / 4 > modalHeigth * 0.5)
+                  ? aspectRatio * 2
+                  : aspectRatio,
               child: Container(
                 alignment: Alignment.center,
                 child: Text(
                   button,
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 20,),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
                 ),
               ),
             ),
@@ -103,41 +120,44 @@ class _CaculatorState extends State<Caculator> {
         ),
         Row(
           children: [
-            _buildButton('C', flex: 2, aspectRatio: 2, color: Colors.orange),
-            _buildButton('⌫'),
-            _buildButton('÷', color: Colors.green),
+            _buildButton("C", flex: 2, aspectRatio: 2, color: Colors.orange),
+            _buildButton("⌫"),
+            _buildButton("÷", color: Colors.green),
           ],
         ),
         Row(
           children: [
-            _buildButton('7'),
-            _buildButton('8'),
-            _buildButton('9'),
-            _buildButton('×', color: Colors.green),
+            _buildButton("7"),
+            _buildButton("8"),
+            _buildButton("9"),
+            _buildButton("×", color: Colors.green),
           ],
         ),
         Row(
           children: [
-            _buildButton('4'),
-            _buildButton('5'),
-            _buildButton('6'),
-            _buildButton('-', color: Colors.green),
+            _buildButton("4"),
+            _buildButton("5"),
+            _buildButton("6"),
+            _buildButton("-", color: Colors.green),
           ],
         ),
         Row(
           children: [
-            _buildButton('1'),
-            _buildButton('2'),
-            _buildButton('3'),
-            _buildButton('+', color: Colors.green),
+            _buildButton("1"),
+            _buildButton("2"),
+            _buildButton("3"),
+            _buildButton("+", color: Colors.green),
           ],
         ),
         Row(
           children: [
-            _buildButton('0'),
-            _buildButton('000'),
-            _buildButton('.'),
-            _buildButton('=', color: Colors.orange),
+            _buildButton("0"),
+            _buildButton("000"),
+            _buildButton("."),
+            _buildButton(
+              _isSubmit ? "✔" : "=",
+              color: _isSubmit ? Colors.green : Colors.orange,
+            ),
           ],
         ),
       ],

@@ -27,9 +27,8 @@ class _NewTransactionState extends State<NewTransaction> {
               showModalBottomSheet<String>(
                 context: context,
                 builder: (BuildContext context) {
-                  return SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    child: const Center(
+                  return const SizedBox(
+                    child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
