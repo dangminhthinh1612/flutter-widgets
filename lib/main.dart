@@ -50,7 +50,7 @@ class _AppState extends State<App> {
                   changeTheme(ThemeMode.light);
                 }
               },
-            )
+            ),
           ],
         ),
         drawer: const Drawer(child: DrawerColumn()),

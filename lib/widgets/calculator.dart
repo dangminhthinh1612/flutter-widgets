@@ -59,7 +59,7 @@ class _CaculatorState extends State<Caculator> {
   }
 
   Widget _buildButton(String button,
-      {double aspectRatio = 1, Color color = Colors.grey, int flex = 1}) {
+      {double aspectRatio = 1, Color color = Colors.grey, int flex = 1,}) {
     return Expanded(
       flex: flex,
       child: Container(
@@ -77,7 +77,7 @@ class _CaculatorState extends State<Caculator> {
                 child: Text(
                   button,
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 20),
+                      fontWeight: FontWeight.bold, fontSize: 20,),
                 ),
               ),
             ),
@@ -139,7 +139,7 @@ class _CaculatorState extends State<Caculator> {
             _buildButton('.'),
             _buildButton('=', color: Colors.orange),
           ],
-        )
+        ),
       ],
     );
   }

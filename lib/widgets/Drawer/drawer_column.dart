@@ -24,11 +24,11 @@ class DrawerColumn extends StatelessWidget {
               ListTile(
                 title: const Text('Title 3'),
                 onTap: () {},
-              )
+              ),
             ],
           ),
         ),
-        const ListTile(title: Text("Ver: 1.0.0"))
+        const ListTile(title: Text("Ver: 1.0.0")),
       ],
     );
   }
