@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/calculator.dart';
+import "package:flutter/material.dart";
+import "package:flutter_application_1/widgets/calculator.dart";
 
 class NewTransaction extends StatefulWidget {
   const NewTransaction({super.key});
@@ -54,11 +54,11 @@ class _NewTransactionState extends State<NewTransaction> {
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Processing Data')),
+                    const SnackBar(content: Text("Processing Data")),
                   );
                 }
               },
-              child: const Text('Submit'),
+              child: const Text("Submit"),
             ),
           ),
         ],

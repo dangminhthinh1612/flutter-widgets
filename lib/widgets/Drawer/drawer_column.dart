@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 class DrawerColumn extends StatelessWidget {
   const DrawerColumn({super.key});
@@ -8,21 +8,21 @@ class DrawerColumn extends StatelessWidget {
     return Column(
       children: [
         const DrawerHeader(
-          child: Text('Header'),
+          child: Text("Header"),
         ),
         Expanded(
           child: Column(
             children: [
               ListTile(
-                title: const Text('Title 1'),
+                title: const Text("Title 1"),
                 onTap: () {},
               ),
               ListTile(
-                title: const Text('Title 2'),
+                title: const Text("Title 2"),
                 onTap: () {},
               ),
               ListTile(
-                title: const Text('Title 3'),
+                title: const Text("Title 3"),
                 onTap: () {},
               ),
             ],
