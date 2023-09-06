@@ -1,10 +1,36 @@
+import "dart:io";
+
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/scheduler.dart";
 import "package:flutter_application_1/screens/new_transaction.dart";
 import "package:flutter_application_1/widgets/Drawer/drawer_column.dart";
+import "package:window_size/window_size.dart";
 
 void main() {
+  // setupWindows();
   runApp(const App());
+}
+
+const double windowWidth = 400;
+const double windowHeight = 800;
+
+void setupWindows() {
+  if (!kIsWeb && (Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
+    WidgetsFlutterBinding.ensureInitialized();
+    setWindowTitle("Provider Demo");
+    setWindowMinSize(const Size(windowWidth, windowHeight));
+    setWindowMaxSize(const Size(windowWidth, windowHeight));
+    getCurrentScreen().then((screen) {
+      setWindowFrame(
+        Rect.fromCenter(
+          center: screen!.frame.center,
+          width: windowWidth,
+          height: windowHeight,
+        ),
+      );
+    });
+  }
 }
 
 class App extends StatefulWidget {

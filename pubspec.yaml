@@ -1,16 +1,20 @@
 name: flutter_application_1
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.2.0-53.0.dev <4.0.0'
+  sdk: ">=3.2.0-53.0.dev <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   intl: ^0.18.1
   math_expressions: ^2.4.0
+  window_size:
+    git:
+      url: https://github.com/google/flutter-desktop-embedding.git
+      path: plugins/window_size
 
 dev_dependencies:
   flutter_test:
