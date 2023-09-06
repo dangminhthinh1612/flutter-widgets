@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  intl: ^0.18.1
   math_expressions: ^2.4.0
 
 dev_dependencies:
