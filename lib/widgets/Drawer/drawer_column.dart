@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:go_router/go_router.dart";
 
 class DrawerColumn extends StatefulWidget {
   // final bool isDarkMode;
@@ -26,12 +27,16 @@ class _DrawerColumnState extends State<DrawerColumn> {
           child: Column(
             children: [
               ListTile(
-                title: const Text("Title 1"),
-                onTap: () {},
+                title: const Text("Home Screen"),
+                onTap: () {
+                  context.go("/");
+                },
               ),
               ListTile(
-                title: const Text("Title 2"),
-                onTap: () {},
+                title: const Text("Provider Shop"),
+                onTap: () {
+                  context.go("/catalog");
+                },
               ),
               ListTile(
                 title: const Text("Title 3"),
