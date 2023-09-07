@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  go_router: ^10.1.2
   intl: ^0.18.1
   math_expressions: ^2.4.0
   window_size:

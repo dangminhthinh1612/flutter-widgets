@@ -1,13 +1,13 @@
 import "package:flutter/material.dart";
 
 class DrawerColumn extends StatefulWidget {
-  final bool isDarkMode;
-  final ValueChanged<ThemeMode> onSwitch;
+  // final bool isDarkMode;
+  // final ValueChanged<ThemeMode> onSwitch;
 
   const DrawerColumn({
     super.key,
-    required this.isDarkMode,
-    required this.onSwitch,
+    // required this.isDarkMode,
+    // required this.onSwitch,
   });
 
   @override
@@ -40,33 +40,33 @@ class _DrawerColumnState extends State<DrawerColumn> {
             ],
           ),
         ),
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text("Ver: 1.0.0"),
-            Switch(
-              value: widget.isDarkMode,
-              thumbIcon: MaterialStateProperty.resolveWith<Icon?>(
-                  (Set<MaterialState> states) {
-                if (widget.isDarkMode) {
-                  return const Icon(Icons.dark_mode_rounded);
-                } else {
-                  return const Icon(
-                    Icons.light_mode_rounded,
-                    color: Colors.orange,
-                  );
-                }
-              }),
-              inactiveThumbColor: Colors.white,
-              inactiveTrackColor: Colors.lime,
-              onChanged: (bool value) {
-                if (value) {
-                  widget.onSwitch(ThemeMode.dark);
-                } else {
-                  widget.onSwitch(ThemeMode.light);
-                }
-              },
-            ),
+            Text("Ver: 1.0.0"),
+            // Switch(
+            //   value: widget.isDarkMode,
+            //   thumbIcon: MaterialStateProperty.resolveWith<Icon?>(
+            //       (Set<MaterialState> states) {
+            //     if (widget.isDarkMode) {
+            //       return const Icon(Icons.dark_mode_rounded);
+            //     } else {
+            //       return const Icon(
+            //         Icons.light_mode_rounded,
+            //         color: Colors.orange,
+            //       );
+            //     }
+            //   }),
+            //   inactiveThumbColor: Colors.white,
+            //   inactiveTrackColor: Colors.lime,
+            //   onChanged: (bool value) {
+            //     if (value) {
+            //       widget.onSwitch(ThemeMode.dark);
+            //     } else {
+            //       widget.onSwitch(ThemeMode.light);
+            //     }
+            //   },
+            // ),
           ],
         ),
       ],
