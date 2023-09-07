@@ -51,11 +51,14 @@ class _DrawerColumnState extends State<DrawerColumn> {
                 if (widget.isDarkMode) {
                   return const Icon(Icons.dark_mode_rounded);
                 } else {
-                  return const Icon(Icons.light_mode_rounded);
+                  return const Icon(
+                    Icons.light_mode_rounded,
+                    color: Colors.orange,
+                  );
                 }
               }),
-              inactiveThumbColor: Colors.teal,
-              inactiveTrackColor: Colors.white,
+              inactiveThumbColor: Colors.white,
+              inactiveTrackColor: Colors.lime,
               onChanged: (bool value) {
                 if (value) {
                   widget.onSwitch(ThemeMode.dark);
