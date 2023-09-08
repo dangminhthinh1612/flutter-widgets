@@ -12,6 +12,7 @@ dependencies:
   go_router: ^10.1.2
   intl: ^0.18.1
   math_expressions: ^2.4.0
+  provider: ^6.0.5
   window_size:
     git:
       url: https://github.com/google/flutter-desktop-embedding.git

@@ -10,9 +10,9 @@ GoRouter routers() {
       GoRoute(path: "/", builder: (context, state) => const Home()),
       GoRoute(
         path: "/catalog",
-        builder: (context, state) => const Catalog(),
+        builder: (context, state) => const MyCatalog(),
         routes: [
-          GoRoute(path: "cart", builder: (context, state) => const Cart()),
+          GoRoute(path: "cart", builder: (context, state) => const MyCart()),
         ],
       ),
     ],
