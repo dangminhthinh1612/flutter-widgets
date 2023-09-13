@@ -14,6 +14,30 @@ class MainAppScreen extends StatefulWidget {
 
 class _MainAppScreenState extends State<MainAppScreen> {
   int currentPageIndex = 0;
+  late PageController _pageController;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      currentPageIndex = index;
+    });
+    _pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.linear,
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +48,14 @@ class _MainAppScreenState extends State<MainAppScreen> {
       drawer: const Drawer(
         child: DrawerColumn(),
       ),
-      body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 500),
-        child: [
-          const HomeScreen(),
-          const TransactionListScreen(),
-          const SettingsScreen(),
-        ][currentPageIndex],
+      body: PageView(
+        controller: _pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: const [
+          HomeScreen(),
+          TransactionListScreen(),
+          SettingsScreen(),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -40,11 +65,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentPageIndex,
-        onDestinationSelected: (int selected) {
-          setState(() {
-            currentPageIndex = selected;
-          });
-        },
+        onDestinationSelected: _onItemTapped,
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.home_outlined),
