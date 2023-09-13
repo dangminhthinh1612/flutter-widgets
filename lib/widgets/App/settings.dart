@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_application_1/mixin/modal_mixin.dart";
 import "package:flutter_application_1/models/category_notifier.dart";
+import "package:flutter_application_1/widgets/gradient_icon.dart";
 import "package:provider/provider.dart";
 
 class SettingsScreen extends StatelessWidget with ModalMixin {
@@ -23,7 +24,10 @@ class SettingsScreen extends StatelessWidget with ModalMixin {
                       .map(
                         (category) => ListTile(
                           title: Text(category.name),
-                          leading: category.iconWidget,
+                          leading: GradientIcon(
+                            id: category.id,
+                            icon: category.iconWidget,
+                          ),
                         ),
                       )
                       .toList(),
