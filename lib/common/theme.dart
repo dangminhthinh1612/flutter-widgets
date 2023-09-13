@@ -9,7 +9,7 @@ const ThemeMode themeMode = ThemeMode.system;
 final bool isDarkMode =
     SchedulerBinding.instance.platformDispatcher.platformBrightness ==
         Brightness.dark;
-final appTheme = ThemeData(useMaterial3: true, colorSchemeSeed: Colors.orange);
+final appTheme = ThemeData(useMaterial3: true, colorSchemeSeed: Colors.amber);
 
 const double windowWidth = 400;
 const double windowHeight = 800;
