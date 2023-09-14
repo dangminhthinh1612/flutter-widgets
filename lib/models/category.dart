@@ -5,12 +5,16 @@ class Category {
   final int id;
   final String name;
   final Icon iconWidget;
+  final bool isOutCome;
+  final int? parentId;
 
   const Category({
+    this.parentId,
     required this.id,
     required this.name,
     required this.iconWidget,
-  });
+    bool? isOutCome,
+  }) : isOutCome = isOutCome ?? true;
 
   @override
   get hashCode => id;
