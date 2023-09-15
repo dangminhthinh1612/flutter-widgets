@@ -154,31 +154,31 @@ class CategoryNotifier extends ChangeNotifier {
       id: 27,
       name: "Tiền thuê nhà",
       iconWidget: Icon(Icons.add_home_rounded),
-      parentId: 10,
+      parentId: 13,
     ),
     const Category(
       id: 28,
       name: "Tiền điện",
       iconWidget: Icon(Icons.electric_meter_rounded),
-      parentId: 10,
+      parentId: 13,
     ),
     const Category(
-      id: 210,
+      id: 29,
       name: "Tiền nước",
       iconWidget: Icon(Icons.water_damage_rounded),
-      parentId: 10,
+      parentId: 13,
     ),
     const Category(
       id: 30,
       name: "Tiền internet",
       iconWidget: Icon(Icons.router_rounded),
-      parentId: 10,
+      parentId: 13,
     ),
     const Category(
       id: 31,
       name: "Tiền điện thoại",
       iconWidget: Icon(Icons.book_online_rounded),
-      parentId: 10,
+      parentId: 13,
     ),
     const Category(
       id: 32,
@@ -227,8 +227,11 @@ class CategoryNotifier extends ChangeNotifier {
 
   List<Category> get categories => _categories;
 
-  void add() {
-    // Add new Category
+  int get newId => _categories.length + 1;
+
+  void add(Category category) {
+    _categories.add(category);
+
     notifyListeners();
   }
 }
