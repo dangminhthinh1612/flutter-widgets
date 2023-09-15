@@ -7,10 +7,13 @@ mixin ModalMixin {
       builder: (BuildContext context) {
         return SizedBox(
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: listWidgets,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 16, bottom: 8),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: listWidgets,
+              ),
             ),
           ),
         );
