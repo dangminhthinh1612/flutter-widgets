@@ -79,7 +79,7 @@ class CategoryScreen extends StatelessWidget with ModalMixin {
                 text: "Loan",
               ),
               Tab(
-                text: "Expense",
+                text: "Income",
               ),
               Tab(
                 text: "Expense",
