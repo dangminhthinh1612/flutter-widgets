@@ -9,6 +9,55 @@ import "package:provider/provider.dart";
 class CategoryScreen extends StatelessWidget with ModalMixin {
   const CategoryScreen({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    var categoryList = context.watch<CategoryNotifier>();
+
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("Category Manager"),
+          actions: [
+            IconButton(
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return CategoryForm(
+                      categoryModel: categoryList,
+                    );
+                  },
+                );
+              },
+              icon: const Icon(Icons.post_add_rounded),
+            ),
+          ],
+          bottom: const TabBar(
+            tabs: [
+              Tab(
+                text: "Loan",
+              ),
+              Tab(
+                text: "Income",
+              ),
+              Tab(
+                text: "Expense",
+              ),
+            ],
+          ),
+        ),
+        body: CategoryTabBarView(categoryList: categoryList),
+      ),
+    );
+  }
+}
+
+class CategoryTabBarView extends StatelessWidget {
+  final CategoryNotifier categoryList;
+
+  const CategoryTabBarView({super.key, required this.categoryList});
+
   List<Widget> initCategory({
     required List<Category> list,
     required bool isOutCome,
@@ -51,74 +100,36 @@ class CategoryScreen extends StatelessWidget with ModalMixin {
 
   @override
   Widget build(BuildContext context) {
-    var categoryList = context.watch<CategoryNotifier>();
-
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text("Category Manager"),
-          actions: [
-            IconButton(
-              onPressed: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return CategoryForm(
-                      xxx: categoryList,
-                    );
-                  },
-                );
-              },
-              icon: const Icon(Icons.post_add_rounded),
-            ),
-          ],
-          bottom: const TabBar(
-            tabs: [
-              Tab(
-                text: "Loan",
-              ),
-              Tab(
-                text: "Income",
-              ),
-              Tab(
-                text: "Expense",
-              ),
-            ],
-          ),
+    return TabBarView(
+      children: [
+        ListView(
+          // TODO: Add Debt & Loan to Categories
+          children: const [Center(child: Text("Debt & Loan"))],
         ),
-        body: TabBarView(
+        ListView(
           children: [
-            ListView(
-              // TODO: Add Debt & Loan to Categories
-              children: const [Center(child: Text("Debt & Loan"))],
-            ),
-            ListView(
-              children: [
-                ...initCategory(
-                  list: categoryList.categories,
-                  isOutCome: false,
-                ),
-              ],
-            ),
-            ListView(
-              children: [
-                ...initCategory(
-                  list: categoryList.categories,
-                  isOutCome: true,
-                ),
-              ],
+            ...initCategory(
+              list: categoryList.categories,
+              isOutCome: false,
             ),
           ],
         ),
-      ),
+        ListView(
+          children: [
+            ...initCategory(
+              list: categoryList.categories,
+              isOutCome: true,
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
 
 class CategoryForm extends StatefulWidget {
-  final CategoryNotifier xxx;
-  const CategoryForm({super.key, required this.xxx});
+  final CategoryNotifier categoryModel;
+  const CategoryForm({super.key, required this.categoryModel});
 
   @override
   State<CategoryForm> createState() => _CategoryFormState();
@@ -142,8 +153,8 @@ class _CategoryFormState extends State<CategoryForm> {
 
   @override
   Widget build(BuildContext context) {
-    List<Category> categories = widget.xxx.categories;
-    int newCategoryId = widget.xxx.newId;
+    List<Category> categories = widget.categoryModel.categories;
+    int newCategoryId = widget.categoryModel.newId;
 
     return Padding(
       padding: const EdgeInsets.all(16),

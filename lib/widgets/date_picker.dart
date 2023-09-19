@@ -4,8 +4,14 @@ import "package:intl/intl.dart" as intl;
 class DatePicker extends StatefulWidget {
   final DateTime date;
   final ValueChanged<DateTime> onChange;
+  final InputDecoration? style;
 
-  const DatePicker({super.key, required this.date, required this.onChange});
+  const DatePicker({
+    super.key,
+    required this.date,
+    required this.onChange,
+    this.style,
+  });
 
   @override
   State<DatePicker> createState() => _DatePickerState();
@@ -31,7 +37,8 @@ class _DatePickerState extends State<DatePicker> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Select date"),
+      decoration:
+          widget.style ?? const InputDecoration(labelText: "Select date"),
       readOnly: true,
       controller: datePickerController,
       onTap: () async {

@@ -59,7 +59,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          context.push("/transaction");
+          context.push("/new_transaction");
         },
         child: const Icon(Icons.add_rounded),
       ),

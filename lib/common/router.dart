@@ -1,4 +1,5 @@
 import "package:flutter_application_1/screens/main_app.dart";
+import "package:flutter_application_1/screens/new_transaction.dart";
 import "package:flutter_application_1/screens/provider_shop/cart.dart";
 import "package:flutter_application_1/screens/provider_shop/catalog.dart";
 import "package:flutter_application_1/screens/settings/category.dart";
@@ -20,6 +21,10 @@ GoRouter routers() {
       GoRoute(
         path: "/settings/categories",
         builder: (context, state) => const CategoryScreen(),
+      ),
+      GoRoute(
+        path: "/new_transaction",
+        builder: (context, state) => const NewTransaction(),
       ),
     ],
   );
