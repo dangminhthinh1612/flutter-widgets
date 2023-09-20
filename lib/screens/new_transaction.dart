@@ -1,8 +1,10 @@
 import "package:flutter/material.dart";
+import "package:flutter_application_1/models/category.dart";
 import "package:flutter_application_1/models/category_notifier.dart";
 import "package:flutter_application_1/widgets/App/settings/category_tab_bar_view.dart";
 import "package:flutter_application_1/widgets/calculator.dart";
 import "package:flutter_application_1/widgets/date_picker.dart";
+import "package:flutter_application_1/widgets/gradient_icon.dart";
 import "package:provider/provider.dart";
 
 class NewTransaction extends StatefulWidget {
@@ -17,6 +19,8 @@ class _NewTransactionState extends State<NewTransaction> {
   String result = "0";
   final myController = TextEditingController(text: "0");
   DateTime currentDate = DateTime.now();
+  final categoryController = TextEditingController();
+  Category? categorySelected;
 
   @override
   Widget build(BuildContext context) {
@@ -75,13 +79,19 @@ class _NewTransactionState extends State<NewTransaction> {
                 },
               ),
               TextFormField(
+                controller: categoryController,
                 readOnly: true,
                 decoration: InputDecoration(
-                  icon: Icon(
-                    Icons.circle,
-                    size: 50,
-                    color: Colors.grey[300],
-                  ),
+                  icon: categorySelected != null
+                      ? GradientIcon(
+                          id: categorySelected!.id,
+                          icon: categorySelected!.iconWidget,
+                        )
+                      : Icon(
+                          Icons.circle,
+                          size: 50,
+                          color: Colors.grey[300],
+                        ),
                   labelText: "Category*",
                   border: const OutlineInputBorder(),
                 ),
@@ -111,13 +121,19 @@ class _NewTransactionState extends State<NewTransaction> {
                             Expanded(
                               child: CategoryTabBarView(
                                 categoryList: categories,
+                                type: "transaction",
                               ),
                             ),
                           ],
                         ),
                       );
                     },
-                  );
+                  ).then((value) {
+                    if (value == null) return;
+
+                    setState(() => categorySelected = value);
+                    categoryController.text = categorySelected!.name;
+                  });
                 },
               ),
               DatePicker(
