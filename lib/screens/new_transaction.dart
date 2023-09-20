@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_application_1/models/category_notifier.dart";
-import "package:flutter_application_1/screens/settings/category.dart";
+import "package:flutter_application_1/widgets/App/settings/category_tab_bar_view.dart";
 import "package:flutter_application_1/widgets/calculator.dart";
 import "package:flutter_application_1/widgets/date_picker.dart";
 import "package:provider/provider.dart";
