@@ -5,8 +5,13 @@ import "package:flutter_application_1/widgets/gradient_icon.dart";
 
 class CategoryTabBarView extends StatefulWidget {
   final CategoryNotifier categoryList;
+  final String type;
 
-  const CategoryTabBarView({super.key, required this.categoryList});
+  const CategoryTabBarView({
+    super.key,
+    required this.categoryList,
+    required this.type,
+  });
 
   @override
   State<CategoryTabBarView> createState() => _CategoryTabBarViewState();
@@ -16,6 +21,7 @@ class _CategoryTabBarViewState extends State<CategoryTabBarView> {
   List<Widget> initCategory({
     required List<Category> list,
     required bool isOutCome,
+    required String type,
   }) {
     return list
         .where(
@@ -25,6 +31,7 @@ class _CategoryTabBarViewState extends State<CategoryTabBarView> {
         .map(
           (catHead) => ListTileHead(
             list: list,
+            type: type,
             name: catHead.name,
             id: catHead.id,
             iconWidget: catHead.iconWidget,
@@ -47,6 +54,7 @@ class _CategoryTabBarViewState extends State<CategoryTabBarView> {
             ...initCategory(
               list: widget.categoryList.categories,
               isOutCome: false,
+              type: widget.type,
             ),
           ],
         ),
@@ -55,6 +63,7 @@ class _CategoryTabBarViewState extends State<CategoryTabBarView> {
             ...initCategory(
               list: widget.categoryList.categories,
               isOutCome: true,
+              type: widget.type,
             ),
           ],
         ),
@@ -65,6 +74,7 @@ class _CategoryTabBarViewState extends State<CategoryTabBarView> {
 
 class ListTileHead extends StatefulWidget {
   final List<Category> list;
+  final String type;
   final String name;
   final int id;
   final Icon iconWidget;
@@ -73,6 +83,7 @@ class ListTileHead extends StatefulWidget {
   const ListTileHead({
     super.key,
     required this.list,
+    required this.type,
     required this.name,
     required this.id,
     required this.iconWidget,
@@ -98,7 +109,18 @@ class _ListTileHeadState extends State<ListTileHead> {
           ),
           shape: const Border(),
           onTap: () {
-            // TODO: Action onTap
+            switch (widget.type) {
+              case "transaction":
+                Navigator.pop(
+                  context,
+                  Category(
+                    id: widget.id,
+                    name: widget.name,
+                    iconWidget: widget.iconWidget,
+                  ),
+                );
+                break;
+            }
           },
           trailing: IconButton(
             icon: Icon(
@@ -137,7 +159,11 @@ class _ListTileHeadState extends State<ListTileHead> {
                             icon: catSub.iconWidget,
                           ),
                           onTap: () {
-                            // TODO: Action onTap
+                            switch (widget.type) {
+                              case "transaction":
+                                Navigator.pop(context, catSub);
+                                break;
+                            }
                           },
                         ),
                       )
