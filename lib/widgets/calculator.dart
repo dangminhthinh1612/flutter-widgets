@@ -84,7 +84,7 @@ class _CaculatorState extends State<Caculator> {
             },
             child: AspectRatio(
               // set aspectRatio depend on width of screen
-              aspectRatio: (modalWidth * 5 / 4 > modalHeigth * 0.5)
+              aspectRatio: (modalWidth * 5 / 4 > modalHeigth * 0.48)
                   ? aspectRatio * 2
                   : aspectRatio,
               child: Container(
@@ -111,7 +111,7 @@ class _CaculatorState extends State<Caculator> {
         Expanded(
           child: Container(
             alignment: Alignment.bottomRight,
-            margin: const EdgeInsets.all(16),
+            margin: const EdgeInsets.only(right: 8),
             child: Text(
               _outPut,
               style: const TextStyle(fontSize: 40),
