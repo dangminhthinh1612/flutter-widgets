@@ -30,12 +30,12 @@ class _CategoryTabBarViewState extends State<CategoryTabBarView> {
         )
         .map(
           (catHead) => ListTileHead(
-            list: list,
             type: type,
-            name: catHead.name,
-            id: catHead.id,
-            iconWidget: catHead.iconWidget,
-            isExpense: isOutCome,
+            categoryHead: catHead,
+            categorySubs: list.where((subSearch) {
+              return subSearch.parentId == catHead.id &&
+                  subSearch.isOutCome == isOutCome;
+            }).toList(),
           ),
         )
         .toList();
@@ -73,21 +73,15 @@ class _CategoryTabBarViewState extends State<CategoryTabBarView> {
 }
 
 class ListTileHead extends StatefulWidget {
-  final List<Category> list;
   final String type;
-  final String name;
-  final int id;
-  final Icon iconWidget;
-  final bool isExpense;
+  final Category categoryHead;
+  final List<Category> categorySubs;
 
   const ListTileHead({
     super.key,
-    required this.list,
     required this.type,
-    required this.name,
-    required this.id,
-    required this.iconWidget,
-    required this.isExpense,
+    required this.categoryHead,
+    required this.categorySubs,
   });
 
   @override
@@ -102,23 +96,16 @@ class _ListTileHeadState extends State<ListTileHead> {
     return Column(
       children: [
         ListTile(
-          title: Text(widget.name),
+          title: Text(widget.categoryHead.name),
           leading: GradientIcon(
-            id: widget.id,
-            icon: widget.iconWidget,
+            id: widget.categoryHead.id,
+            icon: widget.categoryHead.iconWidget,
           ),
           shape: const Border(),
           onTap: () {
             switch (widget.type) {
               case "transaction":
-                Navigator.pop(
-                  context,
-                  Category(
-                    id: widget.id,
-                    name: widget.name,
-                    iconWidget: widget.iconWidget,
-                  ),
-                );
+                Navigator.pop(context, widget.categoryHead);
                 break;
             }
           },
@@ -127,9 +114,7 @@ class _ListTileHeadState extends State<ListTileHead> {
               isOpen ? Icons.expand_less_rounded : Icons.expand_more_rounded,
             ),
             onPressed: () {
-              setState(() {
-                isOpen = !isOpen;
-              });
+              setState(() => isOpen = !isOpen);
             },
           ),
         ),
@@ -144,12 +129,7 @@ class _ListTileHeadState extends State<ListTileHead> {
           },
           child: isOpen
               ? Column(
-                  children: widget.list
-                      .where(
-                        (subSearch) =>
-                            subSearch.parentId == widget.id &&
-                            subSearch.isOutCome == widget.isExpense,
-                      )
+                  children: widget.categorySubs
                       .map(
                         (catSub) => ListTile(
                           contentPadding: const EdgeInsets.only(left: 40),
