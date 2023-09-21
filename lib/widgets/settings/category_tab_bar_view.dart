@@ -101,6 +101,9 @@ class _ListTileHeadState extends State<ListTileHead> {
               case "transaction":
                 Navigator.pop(context, widget.categoryHead);
                 break;
+              case "list":
+                // TODO: Update category
+                break;
             }
           },
           trailing: IconButton(
@@ -136,6 +139,9 @@ class _ListTileHeadState extends State<ListTileHead> {
                             switch (widget.type) {
                               case "transaction":
                                 Navigator.pop(context, catSub);
+                                break;
+                              case "list":
+                                // TODO: Update category
                                 break;
                             }
                           },
