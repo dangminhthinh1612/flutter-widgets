@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:flutter_application_1/models/category.dart";
-import "package:flutter_application_1/models/category_notifier.dart";
+import "package:flutter_application_1/providers/category_provider.dart";
 import "package:flutter_application_1/widgets/gradient_icon.dart";
 
 class CategoryTabBarView extends StatefulWidget {
-  final CategoryNotifier categoryList;
+  final CategoryProvider categoryList;
   final String type;
 
   const CategoryTabBarView({

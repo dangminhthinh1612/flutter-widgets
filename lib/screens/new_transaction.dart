@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_application_1/models/category.dart";
-import "package:flutter_application_1/models/category_notifier.dart";
-import "package:flutter_application_1/widgets/App/settings/category_tab_bar_view.dart";
+import "package:flutter_application_1/providers/category_provider.dart";
+import "package:flutter_application_1/widgets/settings/category_tab_bar_view.dart";
 import "package:flutter_application_1/widgets/calculator.dart";
 import "package:flutter_application_1/widgets/date_picker.dart";
 import "package:flutter_application_1/widgets/gradient_icon.dart";
@@ -96,7 +96,7 @@ class _NewTransactionState extends State<NewTransaction> {
                   border: const OutlineInputBorder(),
                 ),
                 onTap: () {
-                  var categories = context.read<CategoryNotifier>();
+                  var categories = context.read<CategoryProvider>();
 
                   showModalBottomSheet(
                     context: context,

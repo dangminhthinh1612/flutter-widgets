@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
-import "package:flutter_application_1/widgets/App/home.dart";
-import "package:flutter_application_1/widgets/App/settings.dart";
-import "package:flutter_application_1/widgets/App/transaction_list.dart";
+import "package:flutter_application_1/screens/App/home.dart";
+import "package:flutter_application_1/screens/App/settings.dart";
+import "package:flutter_application_1/screens/App/transaction_list.dart";
 import "package:flutter_application_1/widgets/Drawer/drawer_column.dart";
 import "package:go_router/go_router.dart";
 

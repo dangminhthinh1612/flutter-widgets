@@ -1,12 +1,12 @@
 import "package:flutter/material.dart";
 import "package:flutter_application_1/models/category.dart";
-import "package:flutter_application_1/models/category_notifier.dart";
+import "package:flutter_application_1/providers/category_provider.dart";
 import "package:flutter_application_1/widgets/gradient_icon.dart";
 import "package:flutter_application_1/widgets/icon_list.dart";
 import "package:provider/provider.dart";
 
 class CategoryForm extends StatefulWidget {
-  final CategoryNotifier categoryModel;
+  final CategoryProvider categoryModel;
   const CategoryForm({super.key, required this.categoryModel});
 
   @override
@@ -161,7 +161,7 @@ class _CategoryFormState extends State<CategoryForm> {
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: ElevatedButton(
                 onPressed: () {
-                  var listCategory = context.read<CategoryNotifier>();
+                  var listCategory = context.read<CategoryProvider>();
                   if (_formKey.currentState!.validate()) {
                     listCategory.add(
                       Category(

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_application_1/models/category.dart";
 
-class CategoryNotifier extends ChangeNotifier {
+class CategoryProvider extends ChangeNotifier {
   static List<Category> defaultCategories = [
     const Category(
       id: 1,

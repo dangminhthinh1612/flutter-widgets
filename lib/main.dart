@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_application_1/common/router.dart";
 import "package:flutter_application_1/common/theme.dart";
-import "package:flutter_application_1/models/category_notifier.dart";
+import "package:flutter_application_1/providers/category_provider.dart";
 import "package:flutter_application_1/models/provider_shop/cart.dart";
 import "package:flutter_application_1/models/provider_shop/catalog.dart";
 import "package:provider/provider.dart";
@@ -33,7 +33,7 @@ class _AppState extends State<App> {
             return cart;
           },
         ),
-        ChangeNotifierProvider(create: (context) => CategoryNotifier()),
+        ChangeNotifierProvider(create: (context) => CategoryProvider()),
       ],
       child: MaterialApp.router(
         theme: appTheme,

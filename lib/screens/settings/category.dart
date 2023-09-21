@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter_application_1/mixin/modal_mixin.dart";
-import "package:flutter_application_1/models/category_notifier.dart";
-import "package:flutter_application_1/widgets/App/settings/category_form.dart";
-import "package:flutter_application_1/widgets/App/settings/category_tab_bar_view.dart";
+import "package:flutter_application_1/providers/category_provider.dart";
+import "package:flutter_application_1/widgets/settings/category_form.dart";
+import "package:flutter_application_1/widgets/settings/category_tab_bar_view.dart";
 import "package:provider/provider.dart";
 
 class CategoryScreen extends StatelessWidget with ModalMixin {
@@ -10,7 +10,7 @@ class CategoryScreen extends StatelessWidget with ModalMixin {
 
   @override
   Widget build(BuildContext context) {
-    var categoryList = context.watch<CategoryNotifier>();
+    var categoryList = context.watch<CategoryProvider>();
 
     return DefaultTabController(
       length: 3,
@@ -46,7 +46,10 @@ class CategoryScreen extends StatelessWidget with ModalMixin {
             ],
           ),
         ),
-        body: CategoryTabBarView(categoryList: categoryList),
+        body: CategoryTabBarView(
+          categoryList: categoryList,
+          type: "",
+        ),
       ),
     );
   }
