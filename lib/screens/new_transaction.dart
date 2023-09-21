@@ -1,10 +1,13 @@
 import "package:flutter/material.dart";
 import "package:flutter_application_1/models/category.dart";
+import "package:flutter_application_1/models/transaction.dart";
 import "package:flutter_application_1/providers/category_provider.dart";
+import "package:flutter_application_1/providers/transaction_provider.dart";
 import "package:flutter_application_1/widgets/settings/category_tab_bar_view.dart";
 import "package:flutter_application_1/widgets/calculator.dart";
 import "package:flutter_application_1/widgets/date_picker.dart";
 import "package:flutter_application_1/widgets/gradient_icon.dart";
+import "package:go_router/go_router.dart";
 import "package:provider/provider.dart";
 
 class NewTransaction extends StatefulWidget {
@@ -30,10 +33,17 @@ class _NewTransactionState extends State<NewTransaction> {
         actions: [
           IconButton(
             onPressed: () {
+              var transactionProvider = context.read<TransactionProvider>();
+
               if (_formKey.currentState!.validate()) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Processing Data")),
+                transactionProvider.add(
+                  Transaction(
+                    amount: double.parse(myController.text),
+                    categoryId: categorySelected!.id,
+                    date: currentDate,
+                  ),
                 );
+                context.go("/");
               }
             },
             icon: const Icon(Icons.check_rounded),
@@ -107,15 +117,9 @@ class _NewTransactionState extends State<NewTransaction> {
                           children: [
                             const TabBar(
                               tabs: [
-                                Tab(
-                                  text: "Loan",
-                                ),
-                                Tab(
-                                  text: "Income",
-                                ),
-                                Tab(
-                                  text: "Expense",
-                                ),
+                                Tab(text: "Loan"),
+                                Tab(text: "Income"),
+                                Tab(text: "Expense"),
                               ],
                             ),
                             Expanded(
@@ -158,14 +162,7 @@ class _NewTransactionState extends State<NewTransaction> {
                 maxLines: 5,
               ),
             ]
-                .expand(
-                  (element) => [
-                    element,
-                    const SizedBox(
-                      height: 8,
-                    ),
-                  ],
-                )
+                .expand((element) => [element, const SizedBox(height: 8)])
                 .toList(),
           ),
         ),

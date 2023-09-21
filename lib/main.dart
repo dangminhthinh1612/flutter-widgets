@@ -4,6 +4,7 @@ import "package:flutter_application_1/common/theme.dart";
 import "package:flutter_application_1/providers/category_provider.dart";
 import "package:flutter_application_1/models/provider_shop/cart.dart";
 import "package:flutter_application_1/models/provider_shop/catalog.dart";
+import "package:flutter_application_1/providers/transaction_provider.dart";
 import "package:provider/provider.dart";
 
 void main() {
@@ -34,6 +35,7 @@ class _AppState extends State<App> {
           },
         ),
         ChangeNotifierProvider(create: (context) => CategoryProvider()),
+        ChangeNotifierProvider(create: (context) => TransactionProvider()),
       ],
       child: MaterialApp.router(
         theme: appTheme,
