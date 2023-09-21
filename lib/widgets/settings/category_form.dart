@@ -6,8 +6,8 @@ import "package:flutter_application_1/widgets/icon_list.dart";
 import "package:provider/provider.dart";
 
 class CategoryForm extends StatefulWidget {
-  final CategoryProvider categoryModel;
-  const CategoryForm({super.key, required this.categoryModel});
+  final CategoryProvider categoryProvider;
+  const CategoryForm({super.key, required this.categoryProvider});
 
   @override
   State<CategoryForm> createState() => _CategoryFormState();
@@ -18,7 +18,7 @@ class _CategoryFormState extends State<CategoryForm> {
   final textController = TextEditingController();
 
   Icon? _selectedIcon;
-  bool? _isExpense = true;
+  bool _isExpense = true;
   int? _parentId;
   bool _categoryNameEmpty = true;
   bool _iconEmpty = true;
@@ -31,8 +31,7 @@ class _CategoryFormState extends State<CategoryForm> {
 
   @override
   Widget build(BuildContext context) {
-    List<Category> categories = widget.categoryModel.categories;
-    int newCategoryId = widget.categoryModel.newId;
+    int newCategoryId = widget.categoryProvider.newId;
 
     return Padding(
       padding: const EdgeInsets.all(16),
@@ -84,10 +83,9 @@ class _CategoryFormState extends State<CategoryForm> {
                 border: OutlineInputBorder(),
               ),
               value: _parentId,
-              items: categories.where((category) {
-                return category.isOutCome == _isExpense &&
-                    category.parentId == null;
-              }).map((catParent) {
+              items: widget.categoryProvider
+                  .categoryParents(_isExpense)
+                  .map((catParent) {
                 return DropdownMenuItem<int>(
                   value: catParent.id,
                   child: Text(catParent.name),

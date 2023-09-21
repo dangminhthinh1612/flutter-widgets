@@ -19,23 +19,17 @@ class CategoryTabBarView extends StatefulWidget {
 
 class _CategoryTabBarViewState extends State<CategoryTabBarView> {
   List<Widget> initCategory({
-    required List<Category> list,
-    required bool isOutCome,
+    required CategoryProvider categoryList,
+    required bool isExpense,
     required String type,
   }) {
-    return list
-        .where(
-          (catSearch) =>
-              catSearch.parentId == null && catSearch.isOutCome == isOutCome,
-        )
+    return categoryList
+        .categoryParents(isExpense)
         .map(
           (catHead) => ListTileHead(
             type: type,
             categoryHead: catHead,
-            categorySubs: list.where((subSearch) {
-              return subSearch.parentId == catHead.id &&
-                  subSearch.isOutCome == isOutCome;
-            }).toList(),
+            categorySubs: categoryList.categorySubs(catHead),
           ),
         )
         .toList();
@@ -52,8 +46,8 @@ class _CategoryTabBarViewState extends State<CategoryTabBarView> {
         ListView(
           children: [
             ...initCategory(
-              list: widget.categoryList.categories,
-              isOutCome: false,
+              categoryList: widget.categoryList,
+              isExpense: false,
               type: widget.type,
             ),
           ],
@@ -61,8 +55,8 @@ class _CategoryTabBarViewState extends State<CategoryTabBarView> {
         ListView(
           children: [
             ...initCategory(
-              list: widget.categoryList.categories,
-              isOutCome: true,
+              categoryList: widget.categoryList,
+              isExpense: true,
               type: widget.type,
             ),
           ],

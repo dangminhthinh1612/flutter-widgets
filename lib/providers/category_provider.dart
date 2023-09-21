@@ -229,6 +229,16 @@ class CategoryProvider extends ChangeNotifier {
 
   int get newId => _categories.length + 1;
 
+  List<Category> categoryParents(bool isExpense) =>
+      _categories.where((category) {
+        return category.parentId == null && category.isOutCome == isExpense;
+      }).toList();
+
+  List<Category> categorySubs(Category catHead) =>
+      _categories.where((category) {
+        return category.parentId == catHead.id;
+      }).toList();
+
   void add(Category category) {
     _categories.add(category);
 

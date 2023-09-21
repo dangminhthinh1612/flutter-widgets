@@ -23,9 +23,7 @@ class CategoryScreen extends StatelessWidget with ModalMixin {
                 showModalBottomSheet(
                   context: context,
                   builder: (BuildContext context) {
-                    return CategoryForm(
-                      categoryModel: categoryList,
-                    );
+                    return CategoryForm(categoryProvider: categoryList);
                   },
                 );
               },
@@ -34,21 +32,15 @@ class CategoryScreen extends StatelessWidget with ModalMixin {
           ],
           bottom: const TabBar(
             tabs: [
-              Tab(
-                text: "Loan",
-              ),
-              Tab(
-                text: "Income",
-              ),
-              Tab(
-                text: "Expense",
-              ),
+              Tab(text: "Loan"),
+              Tab(text: "Income"),
+              Tab(text: "Expense"),
             ],
           ),
         ),
         body: CategoryTabBarView(
           categoryList: categoryList,
-          type: "",
+          type: "list",
         ),
       ),
     );
