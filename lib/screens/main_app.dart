@@ -1,9 +1,9 @@
-import "package:flutter/material.dart";
-import "package:flutter_application_1/screens/App/home.dart";
-import "package:flutter_application_1/screens/App/settings.dart";
-import "package:flutter_application_1/screens/App/transaction_list.dart";
-import "package:flutter_application_1/widgets/Drawer/drawer_column.dart";
-import "package:go_router/go_router.dart";
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/App/home.dart';
+import 'package:flutter_application_1/screens/App/settings.dart';
+import 'package:flutter_application_1/screens/App/transaction_list.dart';
+import 'package:flutter_application_1/widgets/Drawer/drawer_column.dart';
+import 'package:go_router/go_router.dart';
 
 class MainAppScreen extends StatefulWidget {
   const MainAppScreen({super.key});
@@ -43,7 +43,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Widgets"),
+        title: const Text('Widgets'),
       ),
       drawer: const Drawer(
         child: DrawerColumn(),
@@ -59,7 +59,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          context.push("/new_transaction");
+          context.push('/new_transaction');
         },
         child: const Icon(Icons.add_rounded),
       ),
@@ -70,17 +70,17 @@ class _MainAppScreenState extends State<MainAppScreen> {
           NavigationDestination(
             icon: Icon(Icons.home_outlined),
             selectedIcon: Icon(Icons.home_rounded),
-            label: "Home",
+            label: 'Home',
           ),
           NavigationDestination(
             icon: Icon(Icons.monetization_on_outlined),
             selectedIcon: Icon(Icons.monetization_on_rounded),
-            label: "Transactions",
+            label: 'Transactions',
           ),
           NavigationDestination(
             icon: Icon(Icons.settings_outlined),
             selectedIcon: Icon(Icons.settings_rounded),
-            label: "Settings",
+            label: 'Settings',
           ),
         ],
       ),

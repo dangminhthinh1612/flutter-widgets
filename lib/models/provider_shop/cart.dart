@@ -1,6 +1,6 @@
-import "package:flutter/foundation.dart";
-import "package:flutter_application_1/models/provider_shop/catalog.dart";
-import "package:flutter_application_1/models/provider_shop/item.dart";
+import 'package:flutter/foundation.dart';
+import 'package:flutter_application_1/models/provider_shop/catalog.dart';
+import 'package:flutter_application_1/models/provider_shop/item.dart';
 
 class Cart extends ChangeNotifier {
   late Catalog _catalog;

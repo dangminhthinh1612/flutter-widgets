@@ -1,6 +1,6 @@
-import "package:flutter/material.dart";
-import "package:flutter_application_1/models/provider_shop/cart.dart";
-import "package:provider/provider.dart";
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/provider_shop/cart.dart';
+import 'package:provider/provider.dart';
 
 class MyCart extends StatefulWidget {
   const MyCart({super.key});
@@ -74,17 +74,17 @@ class _CartTotal extends StatelessWidget {
           children: [
             Consumer<Cart>(
               builder: (context, cart, child) =>
-                  Text("\$${cart.totalPrice}", style: hugeStyle),
+                  Text('\$${cart.totalPrice}', style: hugeStyle),
             ),
             const SizedBox(width: 24),
             FilledButton(
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Buying not supported yet.")),
+                  const SnackBar(content: Text('Buying not supported yet.')),
                 );
               },
               style: TextButton.styleFrom(foregroundColor: Colors.white),
-              child: const Text("BUY"),
+              child: const Text('BUY'),
             ),
           ],
         ),

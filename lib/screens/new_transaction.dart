@@ -1,14 +1,14 @@
-import "package:flutter/material.dart";
-import "package:flutter_application_1/models/category.dart";
-import "package:flutter_application_1/models/transaction.dart";
-import "package:flutter_application_1/providers/category_provider.dart";
-import "package:flutter_application_1/providers/transaction_provider.dart";
-import "package:flutter_application_1/widgets/settings/category_tab_bar_view.dart";
-import "package:flutter_application_1/widgets/calculator.dart";
-import "package:flutter_application_1/widgets/date_picker.dart";
-import "package:flutter_application_1/widgets/gradient_icon.dart";
-import "package:go_router/go_router.dart";
-import "package:provider/provider.dart";
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/category.dart';
+import 'package:flutter_application_1/models/transaction.dart';
+import 'package:flutter_application_1/providers/category_provider.dart';
+import 'package:flutter_application_1/providers/transaction_provider.dart';
+import 'package:flutter_application_1/widgets/settings/category_tab_bar_view.dart';
+import 'package:flutter_application_1/widgets/calculator.dart';
+import 'package:flutter_application_1/widgets/date_picker.dart';
+import 'package:flutter_application_1/widgets/gradient_icon.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class NewTransaction extends StatefulWidget {
   const NewTransaction({super.key});
@@ -19,8 +19,8 @@ class NewTransaction extends StatefulWidget {
 
 class _NewTransactionState extends State<NewTransaction> {
   final _formKey = GlobalKey<FormState>();
-  String result = "0";
-  final myController = TextEditingController(text: "0");
+  String result = '0';
+  final myController = TextEditingController(text: '0');
   DateTime currentDate = DateTime.now();
   final categoryController = TextEditingController();
   Category? categorySelected;
@@ -29,7 +29,7 @@ class _NewTransactionState extends State<NewTransaction> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("New Transaction"),
+        title: const Text('New Transaction'),
         actions: [
           IconButton(
             onPressed: () {
@@ -43,7 +43,7 @@ class _NewTransactionState extends State<NewTransaction> {
                     date: currentDate,
                   ),
                 );
-                context.go("/");
+                context.go('/');
               }
             },
             icon: const Icon(Icons.check_rounded),
@@ -62,7 +62,7 @@ class _NewTransactionState extends State<NewTransaction> {
                 controller: myController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: "Amount*",
+                  labelText: 'Amount*',
                 ),
                 onTap: () {
                   showModalBottomSheet<String>(
@@ -102,7 +102,7 @@ class _NewTransactionState extends State<NewTransaction> {
                           size: 50,
                           color: Colors.grey[300],
                         ),
-                  labelText: "Category*",
+                  labelText: 'Category*',
                   border: const OutlineInputBorder(),
                 ),
                 onTap: () {
@@ -117,15 +117,15 @@ class _NewTransactionState extends State<NewTransaction> {
                           children: [
                             const TabBar(
                               tabs: [
-                                Tab(text: "Loan"),
-                                Tab(text: "Income"),
-                                Tab(text: "Expense"),
+                                Tab(text: 'Loan'),
+                                Tab(text: 'Income'),
+                                Tab(text: 'Expense'),
                               ],
                             ),
                             Expanded(
                               child: CategoryTabBarView(
                                 categoryList: categories,
-                                type: "transaction",
+                                type: 'transaction',
                               ),
                             ),
                           ],
@@ -144,7 +144,7 @@ class _NewTransactionState extends State<NewTransaction> {
                 date: currentDate,
                 style: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: "Date*",
+                  labelText: 'Date*',
                 ),
                 onChange: (value) {
                   setState(() {
@@ -154,8 +154,8 @@ class _NewTransactionState extends State<NewTransaction> {
               ),
               TextFormField(
                 decoration: const InputDecoration(
-                  labelText: "Note",
-                  hintText: "Write some note ...",
+                  labelText: 'Note',
+                  hintText: 'Write some note ...',
                   alignLabelWithHint: true,
                   border: OutlineInputBorder(),
                 ),

@@ -1,5 +1,5 @@
-import "package:flutter/material.dart";
-import "package:intl/intl.dart" as intl;
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart' as intl;
 
 class DatePicker extends StatefulWidget {
   final DateTime date;
@@ -24,7 +24,7 @@ class _DatePickerState extends State<DatePicker> {
   void initState() {
     super.initState();
     datePickerController = TextEditingController(
-      text: intl.DateFormat("E, d/M/y").format(widget.date),
+      text: intl.DateFormat('E, d/M/y').format(widget.date),
     );
   }
 
@@ -38,7 +38,7 @@ class _DatePickerState extends State<DatePicker> {
   Widget build(BuildContext context) {
     return TextFormField(
       decoration:
-          widget.style ?? const InputDecoration(labelText: "Select date"),
+          widget.style ?? const InputDecoration(labelText: 'Select date'),
       readOnly: true,
       controller: datePickerController,
       onTap: () async {
@@ -53,7 +53,7 @@ class _DatePickerState extends State<DatePicker> {
 
         widget.onChange(newDate);
 
-        datePickerController.text = intl.DateFormat("E, d/M/y").format(newDate);
+        datePickerController.text = intl.DateFormat('E, d/M/y').format(newDate);
       },
     );
   }

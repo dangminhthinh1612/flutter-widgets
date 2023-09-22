@@ -1,5 +1,5 @@
-import "package:flutter/material.dart";
-import "package:math_expressions/math_expressions.dart";
+import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 class Caculator extends StatefulWidget {
   const Caculator({super.key});
@@ -9,32 +9,32 @@ class Caculator extends StatefulWidget {
 }
 
 class _CaculatorState extends State<Caculator> {
-  String _outPut = "0";
-  String _realInPut = "";
+  String _outPut = '0';
+  String _realInPut = '';
   bool _isSubmit = false;
 
   void _onPress(String button) {
     setState(() {
-      if (button == "=") {
+      if (button == '=') {
         _calculate();
-      } else if (button == "C") {
-        _outPut = "0";
-      } else if (button == "⌫") {
+      } else if (button == 'C') {
+        _outPut = '0';
+      } else if (button == '⌫') {
         _outPut = _outPut.substring(0, _outPut.length - 1);
-        if (_outPut == "") {
-          _outPut = "0";
+        if (_outPut == '') {
+          _outPut = '0';
         }
-      } else if (button == "✔") {
+      } else if (button == '✔') {
         _isSubmit = false;
         Navigator.pop(context, _outPut);
       } else {
-        if (_outPut.startsWith("0")) {
-          if (button == "000" || button == "0") {
-            _outPut = "0";
-          } else if (button == ".") {
-            _outPut = "0.";
+        if (_outPut.startsWith('0')) {
+          if (button == '000' || button == '0') {
+            _outPut = '0';
+          } else if (button == '.') {
+            _outPut = '0.';
           } else {
-            if (_outPut.startsWith("0.")) {
+            if (_outPut.startsWith('0.')) {
               _outPut += button;
             } else {
               _outPut = _outPut.substring(1);
@@ -49,8 +49,8 @@ class _CaculatorState extends State<Caculator> {
   }
 
   String _calculate() {
-    _realInPut = _outPut.replaceAll("÷", "/");
-    _realInPut = _realInPut.replaceAll("×", "*");
+    _realInPut = _outPut.replaceAll('÷', '/');
+    _realInPut = _realInPut.replaceAll('×', '*');
 
     try {
       Parser p = Parser();
@@ -59,7 +59,7 @@ class _CaculatorState extends State<Caculator> {
       _isSubmit = true;
       return _outPut = exp.evaluate(EvaluationType.REAL, cm).toString();
     } catch (e) {
-      return "Error";
+      return 'Error';
     }
   }
 
@@ -120,42 +120,42 @@ class _CaculatorState extends State<Caculator> {
         ),
         Row(
           children: [
-            _buildButton("C", flex: 2, aspectRatio: 2, color: Colors.orange),
-            _buildButton("⌫"),
-            _buildButton("÷", color: Colors.green),
+            _buildButton('C', flex: 2, aspectRatio: 2, color: Colors.orange),
+            _buildButton('⌫'),
+            _buildButton('÷', color: Colors.green),
           ],
         ),
         Row(
           children: [
-            _buildButton("7"),
-            _buildButton("8"),
-            _buildButton("9"),
-            _buildButton("×", color: Colors.green),
+            _buildButton('7'),
+            _buildButton('8'),
+            _buildButton('9'),
+            _buildButton('×', color: Colors.green),
           ],
         ),
         Row(
           children: [
-            _buildButton("4"),
-            _buildButton("5"),
-            _buildButton("6"),
-            _buildButton("-", color: Colors.green),
+            _buildButton('4'),
+            _buildButton('5'),
+            _buildButton('6'),
+            _buildButton('-', color: Colors.green),
           ],
         ),
         Row(
           children: [
-            _buildButton("1"),
-            _buildButton("2"),
-            _buildButton("3"),
-            _buildButton("+", color: Colors.green),
+            _buildButton('1'),
+            _buildButton('2'),
+            _buildButton('3'),
+            _buildButton('+', color: Colors.green),
           ],
         ),
         Row(
           children: [
-            _buildButton("0"),
-            _buildButton("000"),
-            _buildButton("."),
+            _buildButton('0'),
+            _buildButton('000'),
+            _buildButton('.'),
             _buildButton(
-              _isSubmit ? "✔" : "=",
+              _isSubmit ? '✔' : '=',
               color: _isSubmit ? Colors.green : Colors.orange,
             ),
           ],

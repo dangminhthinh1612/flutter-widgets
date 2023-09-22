@@ -1,11 +1,11 @@
-import "package:flutter/material.dart";
-import "package:flutter_application_1/common/router.dart";
-import "package:flutter_application_1/common/theme.dart";
-import "package:flutter_application_1/providers/category_provider.dart";
-import "package:flutter_application_1/models/provider_shop/cart.dart";
-import "package:flutter_application_1/models/provider_shop/catalog.dart";
-import "package:flutter_application_1/providers/transaction_provider.dart";
-import "package:provider/provider.dart";
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/common/router.dart';
+import 'package:flutter_application_1/common/theme.dart';
+import 'package:flutter_application_1/providers/category_provider.dart';
+import 'package:flutter_application_1/models/provider_shop/cart.dart';
+import 'package:flutter_application_1/models/provider_shop/catalog.dart';
+import 'package:flutter_application_1/providers/transaction_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   // setupWindows();
@@ -28,7 +28,7 @@ class _AppState extends State<App> {
         ChangeNotifierProxyProvider<Catalog, Cart>(
           create: (context) => Cart(),
           update: (context, catalog, cart) {
-            if (cart == null) throw ArgumentError.notNull("Cart");
+            if (cart == null) throw ArgumentError.notNull('Cart');
 
             cart.catalog = catalog;
             return cart;

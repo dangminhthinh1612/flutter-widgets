@@ -1,9 +1,9 @@
-import "package:flutter/material.dart";
-import "package:flutter_application_1/models/category.dart";
-import "package:flutter_application_1/providers/category_provider.dart";
-import "package:flutter_application_1/widgets/gradient_icon.dart";
-import "package:flutter_application_1/widgets/icon_list.dart";
-import "package:provider/provider.dart";
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/category.dart';
+import 'package:flutter_application_1/providers/category_provider.dart';
+import 'package:flutter_application_1/widgets/gradient_icon.dart';
+import 'package:flutter_application_1/widgets/icon_list.dart';
+import 'package:provider/provider.dart';
 
 class CategoryForm extends StatefulWidget {
   final CategoryProvider categoryProvider;
@@ -44,7 +44,7 @@ class _CategoryFormState extends State<CategoryForm> {
               children: [
                 Expanded(
                   child: RadioListTile<bool>(
-                    title: const Text("Income"),
+                    title: const Text('Income'),
                     value: false,
                     groupValue: _isExpense,
                     contentPadding: EdgeInsets.zero,
@@ -60,7 +60,7 @@ class _CategoryFormState extends State<CategoryForm> {
                 ),
                 Expanded(
                   child: RadioListTile<bool>(
-                    title: const Text("Expense"),
+                    title: const Text('Expense'),
                     value: true,
                     groupValue: _isExpense,
                     contentPadding: EdgeInsets.zero,
@@ -78,8 +78,8 @@ class _CategoryFormState extends State<CategoryForm> {
             ),
             DropdownButtonFormField(
               decoration: const InputDecoration(
-                labelText: "Parent Category",
-                hintText: "Empty",
+                labelText: 'Parent Category',
+                hintText: 'Empty',
                 border: OutlineInputBorder(),
               ),
               value: _parentId,
@@ -102,7 +102,7 @@ class _CategoryFormState extends State<CategoryForm> {
             TextFormField(
               controller: textController,
               decoration: InputDecoration(
-                labelText: "Category name",
+                labelText: 'Category name',
                 border: const OutlineInputBorder(),
                 errorBorder:
                     !_categoryNameEmpty ? const OutlineInputBorder() : null,
@@ -144,13 +144,13 @@ class _CategoryFormState extends State<CategoryForm> {
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
                   setState(() => _categoryNameEmpty = true);
-                  return "Please enter Category name";
+                  return 'Please enter Category name';
                 } else if (_selectedIcon == null) {
                   setState(() {
                     _categoryNameEmpty = false;
                     _iconEmpty = true;
                   });
-                  return "Please choose Icon";
+                  return 'Please choose Icon';
                 }
                 return null;
               },
@@ -173,7 +173,7 @@ class _CategoryFormState extends State<CategoryForm> {
                     Navigator.pop(context);
                   }
                 },
-                child: const Text("Submit"),
+                child: const Text('Submit'),
               ),
             ),
           ].expand((child) => [child, const SizedBox(height: 8)]).toList(),

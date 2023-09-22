@@ -1,4 +1,4 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 
 @immutable
 class Transaction {
@@ -12,5 +12,5 @@ class Transaction {
     required this.categoryId,
     required this.date,
     String? note,
-  }) : note = note ?? "";
+  }) : note = note ?? '';
 }

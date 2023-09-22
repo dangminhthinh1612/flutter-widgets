@@ -1,5 +1,5 @@
-import "package:fl_chart/fl_chart.dart";
-import "package:flutter/material.dart";
+import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/material.dart';
 
 class _BarChart extends StatelessWidget {
   const _BarChart();
@@ -51,28 +51,28 @@ class _BarChart extends StatelessWidget {
     String text;
     switch (value.toInt()) {
       case 0:
-        text = "Mn";
+        text = 'Mn';
         break;
       case 1:
-        text = "Te";
+        text = 'Te';
         break;
       case 2:
-        text = "Wd";
+        text = 'Wd';
         break;
       case 3:
-        text = "Tu";
+        text = 'Tu';
         break;
       case 4:
-        text = "Fr";
+        text = 'Fr';
         break;
       case 5:
-        text = "St";
+        text = 'St';
         break;
       case 6:
-        text = "Sn";
+        text = 'Sn';
         break;
       default:
-        text = "";
+        text = '';
         break;
     }
     return SideTitleWidget(

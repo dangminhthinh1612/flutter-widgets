@@ -1,7 +1,7 @@
-import "package:flutter/material.dart";
-import "package:flutter_application_1/models/category.dart";
-import "package:flutter_application_1/providers/category_provider.dart";
-import "package:flutter_application_1/widgets/gradient_icon.dart";
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/category.dart';
+import 'package:flutter_application_1/providers/category_provider.dart';
+import 'package:flutter_application_1/widgets/gradient_icon.dart';
 
 class CategoryTabBarView extends StatefulWidget {
   final CategoryProvider categoryList;
@@ -41,7 +41,7 @@ class _CategoryTabBarViewState extends State<CategoryTabBarView> {
       children: [
         ListView(
           // TODO: Add Debt & Loan to Categories
-          children: const [Center(child: Text("Debt & Loan"))],
+          children: const [Center(child: Text('Debt & Loan'))],
         ),
         ListView(
           children: [
@@ -98,10 +98,10 @@ class _ListTileHeadState extends State<ListTileHead> {
           shape: const Border(),
           onTap: () {
             switch (widget.type) {
-              case "transaction":
+              case 'transaction':
                 Navigator.pop(context, widget.categoryHead);
                 break;
-              case "list":
+              case 'list':
                 // TODO: Update category
                 break;
             }
@@ -137,10 +137,10 @@ class _ListTileHeadState extends State<ListTileHead> {
                           ),
                           onTap: () {
                             switch (widget.type) {
-                              case "transaction":
+                              case 'transaction':
                                 Navigator.pop(context, catSub);
                                 break;
-                              case "list":
+                              case 'list':
                                 // TODO: Update category
                                 break;
                             }

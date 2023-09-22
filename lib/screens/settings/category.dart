@@ -1,9 +1,9 @@
-import "package:flutter/material.dart";
-import "package:flutter_application_1/mixin/modal_mixin.dart";
-import "package:flutter_application_1/providers/category_provider.dart";
-import "package:flutter_application_1/widgets/settings/category_form.dart";
-import "package:flutter_application_1/widgets/settings/category_tab_bar_view.dart";
-import "package:provider/provider.dart";
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/mixin/modal_mixin.dart';
+import 'package:flutter_application_1/providers/category_provider.dart';
+import 'package:flutter_application_1/widgets/settings/category_form.dart';
+import 'package:flutter_application_1/widgets/settings/category_tab_bar_view.dart';
+import 'package:provider/provider.dart';
 
 class CategoryScreen extends StatelessWidget with ModalMixin {
   const CategoryScreen({super.key});
@@ -16,7 +16,7 @@ class CategoryScreen extends StatelessWidget with ModalMixin {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Category Manager"),
+          title: const Text('Category Manager'),
           actions: [
             IconButton(
               onPressed: () {
@@ -32,15 +32,15 @@ class CategoryScreen extends StatelessWidget with ModalMixin {
           ],
           bottom: const TabBar(
             tabs: [
-              Tab(text: "Loan"),
-              Tab(text: "Income"),
-              Tab(text: "Expense"),
+              Tab(text: 'Loan'),
+              Tab(text: 'Income'),
+              Tab(text: 'Expense'),
             ],
           ),
         ),
         body: CategoryTabBarView(
           categoryList: categoryList,
-          type: "list",
+          type: 'list',
         ),
       ),
     );

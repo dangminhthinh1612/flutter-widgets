@@ -1,5 +1,5 @@
-import "package:flutter/material.dart";
-import "package:go_router/go_router.dart";
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class DrawerColumn extends StatefulWidget {
   // final bool isDarkMode;
@@ -21,25 +21,25 @@ class _DrawerColumnState extends State<DrawerColumn> {
     return Column(
       children: [
         const DrawerHeader(
-          child: Text("Header"),
+          child: Text('Header'),
         ),
         Expanded(
           child: Column(
             children: [
               ListTile(
-                title: const Text("Home Screen"),
+                title: const Text('Home Screen'),
                 onTap: () {
-                  context.go("/");
+                  context.go('/');
                 },
               ),
               ListTile(
-                title: const Text("Provider Shop"),
+                title: const Text('Provider Shop'),
                 onTap: () {
-                  context.go("/catalog");
+                  context.go('/catalog');
                 },
               ),
               ListTile(
-                title: const Text("Title 3"),
+                title: const Text('Title 3'),
                 onTap: () {},
               ),
             ],
@@ -48,7 +48,7 @@ class _DrawerColumnState extends State<DrawerColumn> {
         const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Ver: 1.0.0"),
+            Text('Ver: 1.0.0'),
             // Switch(
             //   value: widget.isDarkMode,
             //   thumbIcon: MaterialStateProperty.resolveWith<Icon?>(

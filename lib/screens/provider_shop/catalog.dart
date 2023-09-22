@@ -1,10 +1,10 @@
-import "package:flutter/material.dart";
-import "package:flutter_application_1/models/provider_shop/cart.dart";
-import "package:flutter_application_1/models/provider_shop/catalog.dart";
-import "package:flutter_application_1/models/provider_shop/item.dart";
-import "package:flutter_application_1/widgets/Drawer/drawer_column.dart";
-import "package:go_router/go_router.dart";
-import "package:provider/provider.dart";
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/provider_shop/cart.dart';
+import 'package:flutter_application_1/models/provider_shop/catalog.dart';
+import 'package:flutter_application_1/models/provider_shop/item.dart';
+import 'package:flutter_application_1/widgets/Drawer/drawer_column.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class MyCatalog extends StatelessWidget {
   const MyCatalog({super.key});
@@ -16,7 +16,7 @@ class MyCatalog extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              context.go("/catalog/cart");
+              context.go('/catalog/cart');
             },
             icon: const Icon(Icons.shopping_cart),
           ),
@@ -62,8 +62,8 @@ class _AddButton extends StatelessWidget {
         }),
       ),
       child: isInCart
-          ? const Icon(Icons.check, semanticLabel: "ADDED")
-          : const Text("ADD"),
+          ? const Icon(Icons.check, semanticLabel: 'ADDED')
+          : const Text('ADD'),
     );
   }
 }

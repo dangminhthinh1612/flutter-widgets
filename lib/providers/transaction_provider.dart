@@ -1,5 +1,5 @@
-import "package:flutter/foundation.dart";
-import "package:flutter_application_1/models/transaction.dart";
+import 'package:flutter/foundation.dart';
+import 'package:flutter_application_1/models/transaction.dart';
 
 class TransactionProvider extends ChangeNotifier {
   // TODO: Init list without empty array.

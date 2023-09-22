@@ -1,5 +1,5 @@
-import "package:flutter/material.dart";
-import "package:flutter_application_1/widgets/chart.dart";
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/widgets/chart.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -24,17 +24,17 @@ class HomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "Total",
+                      'Total',
                       style: (Theme.of(context).textTheme.titleLarge),
                     ),
                     Text(
-                      "See all",
+                      'See all',
                       style: (Theme.of(context).textTheme.bodySmall),
                     ),
                   ],
                 ),
                 Text(
-                  "\$10,000",
+                  '\$10,000',
                   style: (Theme.of(context).textTheme.titleLarge),
                 ),
               ],
