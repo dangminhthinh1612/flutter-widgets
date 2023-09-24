@@ -1,8 +1,9 @@
-import 'package:flutter_application_1/screens/main_app.dart';
-import 'package:flutter_application_1/screens/new_transaction.dart';
+import 'package:flutter_application_1/screens/money_manager/main_app.dart';
+import 'package:flutter_application_1/screens/money_manager/new_transaction.dart';
+import 'package:flutter_application_1/screens/note/home.dart';
 import 'package:flutter_application_1/screens/provider_shop/cart.dart';
 import 'package:flutter_application_1/screens/provider_shop/catalog.dart';
-import 'package:flutter_application_1/screens/settings/category.dart';
+import 'package:flutter_application_1/screens/money_manager/settings/category.dart';
 import 'package:go_router/go_router.dart';
 
 GoRouter routers() {
@@ -26,6 +27,7 @@ GoRouter routers() {
         path: '/new_transaction',
         builder: (context, state) => const NewTransaction(),
       ),
+      GoRoute(path: '/note', builder: (context, state) => const NoteHome())
     ],
   );
 }

@@ -39,8 +39,8 @@ class _DrawerColumnState extends State<DrawerColumn> {
                 },
               ),
               ListTile(
-                title: const Text('Title 3'),
-                onTap: () {},
+                title: const Text('Note App'),
+                onTap: () => context.go('/note'),
               ),
             ],
           ),

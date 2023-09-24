@@ -10,6 +10,7 @@ dependencies:
   fl_chart: ^0.63.0
   flutter:
     sdk: flutter
+  flutter_quill: ^7.4.6
   go_router: ^10.1.2
   intl: ^0.18.1
   math_expressions: ^2.4.0
