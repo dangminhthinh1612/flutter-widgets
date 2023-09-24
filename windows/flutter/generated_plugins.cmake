@@ -3,6 +3,8 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  pasteboard
+  url_launcher_windows
   window_size
 )
 
