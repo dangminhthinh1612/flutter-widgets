@@ -1,5 +1,6 @@
 import 'package:flutter_application_1/screens/money_manager/main_app.dart';
 import 'package:flutter_application_1/screens/money_manager/new_transaction.dart';
+import 'package:flutter_application_1/screens/note/editor.dart';
 import 'package:flutter_application_1/screens/note/home.dart';
 import 'package:flutter_application_1/screens/provider_shop/cart.dart';
 import 'package:flutter_application_1/screens/provider_shop/catalog.dart';
@@ -8,7 +9,7 @@ import 'package:go_router/go_router.dart';
 
 GoRouter routers() {
   return GoRouter(
-    initialLocation: '/',
+    initialLocation: '/note',
     routes: [
       GoRoute(path: '/', builder: (context, state) => const MainAppScreen()),
       // GoRoute(path: "/", builder: (context, state) => const Home()),
@@ -27,7 +28,16 @@ GoRouter routers() {
         path: '/new_transaction',
         builder: (context, state) => const NewTransaction(),
       ),
-      GoRoute(path: '/note', builder: (context, state) => const NoteHome())
+      GoRoute(
+        path: '/note',
+        builder: (context, state) => const NoteHome(),
+        routes: [
+          GoRoute(
+            path: 'new',
+            builder: (context, state) => const NoteEditor(),
+          ),
+        ],
+      ),
     ],
   );
 }
