@@ -19,13 +19,12 @@ class _ListNoteState extends State<ListNote> {
       body: Consumer<NoteNotifier>(
         builder: (context, noteNotifier, child) {
           return MasonryGridView.count(
-            crossAxisCount: 2, // Số cột của lưới
-            itemCount: noteNotifier.noteList.length, // Số lượng ô trong lưới
+            crossAxisCount: 2,
+            itemCount: noteNotifier.noteList.length,
             itemBuilder: (BuildContext context, int index) {
               return Card(
                 clipBehavior: Clip.hardEdge,
                 child: InkWell(
-                  // borderRadius: BorderRadius.circular(8.0),
                   onTap: () {},
                   child: QuillEditor(
                     controller: noteNotifier.noteControllerList[index],

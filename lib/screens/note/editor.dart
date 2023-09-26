@@ -51,18 +51,38 @@ class _NoteEditorState extends State<NoteEditor> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          TextField(controller: _titleController),
-          const SizedBox(height: 4),
-          QuillToolbar.basic(controller: _quillController),
-          Expanded(
-            child: QuillEditor.basic(
-              controller: _quillController,
-              readOnly: false, // true for view only mode
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Column(
+          children: [
+            TextField(
+              controller: _titleController,
+              decoration: InputDecoration(
+                hintText: 'Title',
+                hintStyle: Theme.of(context)
+                    .textTheme
+                    .headlineLarge!
+                    .copyWith(color: Colors.grey),
+              ),
+              style: Theme.of(context).textTheme.headlineLarge,
             ),
-          ),
-        ],
+            QuillToolbar.basic(
+              controller: _quillController,
+              showFontFamily: false,
+              showSubscript: false,
+              showSuperscript: false,
+              showInlineCode: false,
+              showCodeBlock: false,
+              showSearchButton: false,
+            ),
+            Expanded(
+              child: QuillEditor.basic(
+                controller: _quillController,
+                readOnly: false,
+              ),
+            ),
+          ].expand((e) => [e, const SizedBox(height: 8)]).toList(),
+        ),
       ),
     );
   }
