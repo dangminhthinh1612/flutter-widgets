@@ -14,9 +14,14 @@ class ListNote extends StatefulWidget {
 class _ListNoteState extends State<ListNote> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Consumer<NoteNotifier>(
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/night.jpeg'),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Consumer<NoteNotifier>(
         builder: (context, noteNotifier, child) {
           return MasonryGridView.count(
             crossAxisCount: 2,

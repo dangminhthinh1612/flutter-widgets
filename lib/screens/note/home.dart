@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/note/Home/list_note.dart';
 import 'package:flutter_application_1/screens/note/Home/list_reminder.dart';
+import 'package:flutter_application_1/widgets/Drawer/drawer_column.dart';
 import 'package:go_router/go_router.dart';
 
 class NoteHome extends StatefulWidget {
@@ -51,6 +52,7 @@ class _NoteHomeState extends State<NoteHome> {
           ListReminder(),
         ],
       ),
+      drawer: const Drawer(child: DrawerColumn()),
       floatingActionButton: FloatingActionButton(
         onPressed: () => context.go('/note/new'),
         child: const Icon(Icons.note_add_rounded),

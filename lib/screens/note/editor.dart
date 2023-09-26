@@ -51,7 +51,13 @@ class _NoteEditorState extends State<NoteEditor> {
           ),
         ],
       ),
-      body: Padding(
+      body: Container(
+        // decoration: const BoxDecoration(
+        //   image: DecorationImage(
+        //     image: AssetImage('assets/images/night.jpeg'),
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: Column(
           children: [
@@ -76,9 +82,15 @@ class _NoteEditorState extends State<NoteEditor> {
               showSearchButton: false,
             ),
             Expanded(
-              child: QuillEditor.basic(
+              child: QuillEditor(
                 controller: _quillController,
+                focusNode: FocusNode(),
+                scrollController: ScrollController(),
+                scrollable: true,
+                padding: EdgeInsets.zero,
+                autoFocus: false,
                 readOnly: false,
+                expands: false,
               ),
             ),
           ].expand((e) => [e, const SizedBox(height: 8)]).toList(),
