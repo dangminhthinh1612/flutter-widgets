@@ -36,6 +36,13 @@ GoRouter routers() {
             path: 'new',
             builder: (context, state) => const NoteEditor(),
           ),
+          GoRoute(
+            path: 'edit/:id',
+            name: 'noteDetail',
+            builder: (context, state) {
+              return NoteEditor(noteId: state.pathParameters['id']);
+            },
+          ),
         ],
       ),
     ],

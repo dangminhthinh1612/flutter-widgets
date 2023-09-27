@@ -18,8 +18,20 @@ class NoteNotifier extends ChangeNotifier {
       )
       .toList();
 
+  Note getById(String id) => _noteList.firstWhere((note) => note.id == id);
+
   void add(Note note) {
     _noteList.add(note);
+
+    notifyListeners();
+  }
+
+  void update(Note note) {
+    int index = _noteList.indexWhere((element) => element.id == note.id);
+    if (index != -1) {
+      _noteList[index].title = note.title;
+      _noteList[index].content = note.content;
+    }
 
     notifyListeners();
   }

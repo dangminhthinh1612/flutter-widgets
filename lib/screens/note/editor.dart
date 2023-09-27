@@ -5,9 +5,12 @@ import 'package:flutter_application_1/models/note/note.dart';
 import 'package:flutter_application_1/providers/note/note_notifier.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 class NoteEditor extends StatefulWidget {
-  const NoteEditor({super.key});
+  final String? noteId;
+
+  const NoteEditor({super.key, this.noteId});
 
   @override
   State<NoteEditor> createState() => _NoteEditorState();
@@ -16,12 +19,23 @@ class NoteEditor extends StatefulWidget {
 class _NoteEditorState extends State<NoteEditor> {
   late TextEditingController _titleController;
   late QuillController _quillController;
+  late Note _currentNote;
 
   @override
   void initState() {
     super.initState();
-    _titleController = TextEditingController();
-    _quillController = QuillController.basic();
+    if (widget.noteId == null) {
+      _titleController = TextEditingController();
+      _quillController = QuillController.basic();
+    } else {
+      _currentNote = Provider.of<NoteNotifier>(context, listen: false)
+          .getById(widget.noteId!);
+      _titleController = TextEditingController(text: _currentNote.title);
+      _quillController = QuillController(
+        document: Document.fromJson(jsonDecode(_currentNote.content)),
+        selection: const TextSelection.collapsed(offset: 0),
+      );
+    }
   }
 
   @override
@@ -43,8 +57,25 @@ class _NoteEditorState extends State<NoteEditor> {
                   jsonEncode(_quillController.document.toDelta().toJson());
 
               if (content != '[{"insert":"\\n"}]') {
-                note.add(Note(content: content, title: _titleController.text));
+                if (widget.noteId == null) {
+                  note.add(
+                    Note(
+                      id: DateFormat('yyMMddHHmmss').format(DateTime.now()),
+                      content: content,
+                      title: _titleController.text,
+                    ),
+                  );
+                } else {
+                  note.update(
+                    Note(
+                      id: widget.noteId!,
+                      content: content,
+                      title: _titleController.text,
+                    ),
+                  );
+                }
               }
+
               Navigator.pop(context);
             },
             icon: const Icon(Icons.save),
