@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/note/Home/list_note.dart';
 import 'package:flutter_application_1/screens/note/Home/list_reminder.dart';
 import 'package:flutter_application_1/widgets/Drawer/drawer_column.dart';
+import 'package:flutter_application_1/widgets/note/custom_search_delegate.dart';
 import 'package:go_router/go_router.dart';
 
 class NoteHome extends StatefulWidget {
@@ -41,7 +42,23 @@ class _NoteHomeState extends State<NoteHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () async {
+              final noteId = await showSearch(
+                context: context,
+                delegate: CustomSearchDelegate(),
+              );
+
+              if (!context.mounted) return;
+
+              context.go('/note/edit/$noteId');
+            },
+            icon: const Icon(Icons.search_rounded),
+          ),
+        ],
+      ),
       body: PageView(
         controller: _pageController,
         onPageChanged: (value) {
